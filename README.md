@@ -11,6 +11,7 @@
 ```
 $ git clone git@github.com:yuuumbk/todo-laravel.git
 $ cd todo-laravel
+$ docker-sync start
 $ docker-compose up -d --build
 $ docker-compose exec app bash
 $ cp .env.example .env
@@ -152,7 +153,30 @@ ERROR: for todo-laravel_****_1 Cannot start service ****: driver failed programm
 
 ---
 
-### 手順5. ビルドし、コンテナを起動する
+
+### 手順9. docker-sync を起動する
+Docker For Mac は、このままの状態だと動作が遅いため、`docker-sync`を用いて高速化します。
+
+
+`docker-sync`がインストールされていない場合は以下のコマンドを入力してください。
+
+```
+$ sudo gem install docker-sync
+$ brew install fswatch
+$ brew install unison
+```
+
+そして、
+
+```
+$ docker-sync start
+```
+
+を入力し、`docker-sync`を起動させます。
+
+---
+
+### 手順6. ビルドし、コンテナを起動する
 ビルドとコンテナの起動を行います。
 
 ```
@@ -172,7 +196,7 @@ Creating todo-laravel_phpmyadmin_1 ... done
 
 ---
 
-### 手順6. .envファイルを作成する
+### 手順7. .envファイルを作成する
 `.env`ファイルはクローンされていないため、`/backend/.env.sample`をコピーして`/backend/.env`ファイルを作成します。
 
 
@@ -206,7 +230,7 @@ root：/work# php artisan key:generate
 
 ---
 
-### 手順7. Laravelパッケージをインストール
+### 手順8. Laravelパッケージをインストール
 Laravelパッケージをインストールします。
 
 ```
@@ -223,40 +247,12 @@ Use the `composer fund` command to find out more!
 
 ---
 
-### 手順8. データベースを作成する
+### 手順9. データベースを作成する
 データベースを以下のコマンドで作成します。
 
 ```
 root：/work# php artisan migrate:refresh
 ```
-
----
-
-### 手順9. docker-sync を起動する
-Docker For Mac は、このままの状態だと動作が遅いため、`docker-sync`を用いて高速化します。
-
-まず、コンテナから抜けます。
-
-```
-root：/work# exit
-```
-
-
-`docker-sync`がインストールされていない場合は以下のコマンドを入力してください。
-
-```
-$ sudo gem install docker-sync
-$ brew install fswatch
-$ brew install unison
-```
-
-そして、
-
-```
-$ docker-sync start
-```
-
-を入力し、`docker-sync`を起動させます。
 
 ---
 
