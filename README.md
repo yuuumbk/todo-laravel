@@ -2,11 +2,36 @@
 # Todo-Laravel
 ご覧いただきありがとうございます。このリポジトリは、Laravelで開発されたTodoアプリです。
 
+![todo-laravel-test-user-home](https://user-images.githubusercontent.com/73621966/120127303-fbc5e500-c1f9-11eb-903d-6e5f5ee067cb.png)
+
+
 ## クイックスタート
 
-ローカル動作環境を簡単に構築する手順を紹介します。データベース設定などを行う場合は、[手順](#手順)より始めてください。
+ローカル動作環境を簡単に構築する手順を紹介します。
 
-クイックスタートを始める前に[前提環境](#前提環境)をご覧ください。必要なものが全てインストールされている場合にクイックスタートをご利用いただけます。クイックスタートに失敗した場合は、[手順](#手順)を参考ください。
+クイックスタートを始める前に[前提環境](#前提環境)をご覧ください。必要なものが全てインストールされている場合にクイックスタートをご利用いただけます。また、ポートについては[ポート](#手順4-その他設定)を確認ください。すでにポートが使用されていた場合エラーが出ます。その際は適切なポートへ変更してください。データベース設定などを行う場合は、[手順](#手順)より始めてください。
+
+クイックスタートに失敗した場合は、[手順](#手順)を参照ください。なお、環境構築官僚に数分を要しますのでご了承ください。
+
+---
+
+それではクイックスタートを始めましょう。たった2行をコマンドプロントに貼り付けるだけでTodoアプリが使えるようになります！
+
+まず初めに以下をコマンドプロントに貼り付けてください。実行したディレクトリの位置に`todo-laravel`ディレクトリが作成されます。
+
+```
+git clone git@github.com:yuuumbk/todo-laravel.git && cd todo-laravel && docker-sync start && docker-compose up -d --build && docker-compose exec app bash
+``` 
+
+次に以下をコマンドプロントに貼り付けてください。上のコマンドを貼り付け後、動作の終了を待たずこちらを貼り付け、実行（エンターキーを押）しておくととスムーズに進みます。
+
+```
+composer install && cp .env.example .env && php artisan key:generate && php artisan migrate:refresh && chown www-data storage/ -R && exit
+```
+
+---
+
+もしくは、以下のコマンドを一つずつ実行してください。
 
 ```
 $ git clone git@github.com:yuuumbk/todo-laravel.git
@@ -14,16 +39,20 @@ $ cd todo-laravel
 $ docker-sync start
 $ docker-compose up -d --build
 $ docker-compose exec app bash
+$ composer install
 $ cp .env.example .env
 $ php artisan key:generate
-$ composer install
 $ php artisan migrate:refresh
 $ chown www-data storage/ -R
 $ exit
-$ docker-sync start
 ```
 
 全てのコマンドが正常に実行されたら、`http:localhost:8080`にアクセスしてください。
+
+ローカル動作環境を完全に削除する際は、[補足2](#補足2-ローカル動作環境を完全に削除する)をご覧ください。
+
+###動作確認用アカウントについて
+Todoアプリがどのように動作するかを確認するだけであれば、あらかじめ用意されたアカウントを用いると便利です。詳しくは[補足1](#補足1-テストアカウントでTodoアプリを試す)をご覧ください。
 
 
 ## 手順
@@ -196,7 +225,24 @@ Creating todo-laravel_phpmyadmin_1 ... done
 
 ---
 
-### 手順7. .envファイルを作成する
+### 手順8. Laravelパッケージをインストール
+Laravelパッケージをインストールします。
+
+```
+root：/work# composer install
+```
+
+```
+Package manifest generated successfully.
+74 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
+```
+
+しばらく経ち、このように表示されたら成功です。
+
+---
+
+### 手順8. .envファイルを作成する
 `.env`ファイルはクローンされていないため、`/backend/.env.sample`をコピーして`/backend/.env`ファイルを作成します。
 
 
@@ -227,23 +273,6 @@ root：/work# php artisan key:generate
 >DB_USERNAME=user #MYSQL_USERと同値
 >
 >DB_PASSWORD=password #MYSQL_PASSWORDと同値
-
----
-
-### 手順8. Laravelパッケージをインストール
-Laravelパッケージをインストールします。
-
-```
-root：/work# composer install
-```
-
-```
-Package manifest generated successfully.
-74 packages you are using are looking for funding.
-Use the `composer fund` command to find out more!
-```
-
-しばらく経ち、このように表示されたら成功です。
 
 ---
 
@@ -279,7 +308,7 @@ root:/work# chown www-data storage/ -R
 
 ![todo-laravel-test-user-home](https://user-images.githubusercontent.com/73621966/120127303-fbc5e500-c1f9-11eb-903d-6e5f5ee067cb.png)
 
-テストアカウントを使うには、以下のコマンドを入力します。
+テストアカウントを使うには、"コンテナ内"で以下のコマンドを入力します。
 
 ```
 root：/work# php artisan migrate:refresh --seed
@@ -289,13 +318,13 @@ root：/work# php artisan migrate:refresh --seed
 
 >メールアドレス：test@example.com
 >
->パスワード：12345678
+>パスワード：todo-laravel
 
 を入力してください。
 
 ### 補足2. ローカル動作環境を完全に削除する
 
-以下のコマンドを入力してください。
+以下のコマンドを入力してください。エラーが出ることがありますが問題ありません。
 
 ```
 $ docker-compose down --rmi all --volumes --remove-orphans
