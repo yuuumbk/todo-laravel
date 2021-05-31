@@ -1,0 +1,128 @@
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+/* @import url('https://cdnjs.cloudflare.com/ajax/libs/bootflat/2.0.4/css/bootflat.min.css'); */
+
+body {
+    background-color: #f4f7f8;
+}
+
+.navbar .container {
+  display: block;
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  .my-clearfix::after {
+      content: "";
+      display: block;
+      clear: both;
+  }
+
+  .navbar-toggler {
+      float: right;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+  }
+
+  .navbar-toggler.bottom {
+      bottom: 56%;
+  }
+
+  .navbar-light .navbar-toggler {
+      border: none;
+  }
+}
+
+.my-navbar {
+    align-items: center;
+    background: #333;
+    display: flex;
+    height: 6rem;
+    justify-content: space-between;
+    padding: 0 2%;
+    margin-bottom: 3rem;
+}
+
+.my-navbar-brand {
+    font-size: 18px;
+}
+
+.my-navbar-brand,
+.my-navbar-item {
+    color: #8c8c8c;
+}
+
+.my-navbar-brand:hover,
+a.my-navbar-item:hover {
+    color: #ffffff;
+}
+
+.table td:nth-child(2),
+.table td:nth-child(3),
+.table td:nth-child(4),
+.table td:nth-child(5) {
+    white-space: nowrap;
+    width: 1px;
+}
+
+.table td span.label.text-center {
+  display: inline-block;
+  width: 100%;
+}
+
+.folder-table.row {
+  margin: 0;
+}
+
+.folder-table tr.row {
+  margin: 0;
+}
+
+.folder-table tr td {
+  padding: 0;
+}
+.folder-table .list-group-item {
+  padding: 0;
+}
+
+.folder-table a {
+  display: block;
+  padding: 10px 15px;
+}
+
+.folder-table a.folder-title {
+  text-decoration: none;
+  color: #000;
+}
+
+.folder-table a.folder-edit,
+.folder-table a.folder-delete {
+  white-space: nowrap;
+}
+
+.over-list {
+  height: 40px;
+}
+
+.form-control[disabled],
+.form-control[readonly] {
+    background-color: #fff;
+}
+
+.dropdown-visible {
+  display: block !important;
+}
+
+.my-col-4-left {
+  padding-left: 30px;
+}
+
+.my-col-8-right {
+  padding-right: 30px;
+}
+
+/* ぺじネーション */
+.pagination-nav {
+  text-align: center;
+}

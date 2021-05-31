@@ -1,0 +1,28 @@
+version: '2'
+
+sync_default: &sync_default
+
+    # 同期させないファイルまたはディレクトリ
+    sync_excludes: ['.gitignore', '.git/', '.idea/']
+
+    # 監視させないファイルまたはディレクトリ
+    watch_excludes: ['.gitignore', '.git/', '.idea/', 'vendor/', 'node_modules/']
+
+    notify_terminal: true
+
+    sync_host_port: 10871
+
+    # 同期方法の選択する
+    sync_strategy: 'unison'
+
+    sync_userid: '1000'
+
+    watch_args: '-v'
+
+    watch_strategy: 'fswatch'
+
+
+syncs:
+    sync:
+        <<: *sync_default
+        src: './backend'
