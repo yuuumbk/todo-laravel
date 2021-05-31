@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', function () {
-  return redirect('home');
+  return redirect()->route('tasks.index');
 });
 
 Route::middleware(['auth'])->group(function () {

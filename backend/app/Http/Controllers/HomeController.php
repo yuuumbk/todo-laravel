@@ -27,10 +27,10 @@ class HomeController extends Controller
     public function index(Request $request)
     {
       // return view('home');
-      if(Auth::check()){
+      // if(Auth::check()){
         return redirect()->route('tasks.index');
-      } else {
-        return view('auth.login');
-      }
+      // } else {
+      //   return view('auth.login');
+      // }
     }
 }
