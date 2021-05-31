@@ -2,6 +2,29 @@
 # Todo-Laravel
 ご覧いただきありがとうございます。このリポジトリは、Laravelで開発されたTodoアプリです。
 
+## クイックスタート
+
+ローカル動作環境を簡単に構築する手順を紹介します。データベース設定などを行う場合は、[手順](#手順)より始めてください。
+
+クイックスタートを始める前に[前提環境](#前提環境)をご覧ください。必要なものが全てインストールされている場合にクイックスタートをご利用いただけます。クイックスタートに失敗した場合は、[手順](#手順)を参考ください。
+
+```
+$ git clone git@github.com:yuuumbk/todo-laravel.git
+$ cd todo-laravel
+$ docker-compose up -d --build
+$ docker-compose exec app bash
+$ cp .env.example .env
+$ php artisan key:generate
+$ composer install
+$ php artisan migrate:refresh
+$ chown www-data storage/ -R
+$ exit
+$ docker-sync start
+```
+
+全てのコマンドが正常に実行されたら、`http:localhost:8080`にアクセスしてください。
+
+
 ## 手順
 以下、ローカル動作環境を構築する手順を紹介します。
 
