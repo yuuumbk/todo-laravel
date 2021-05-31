@@ -65,11 +65,16 @@ Todoアプリがどのように動作するかを確認するだけであれば�
 $ docker -v
 Docker version 20.10.6, build 370c289
 ```
+参考：https://docs.docker.com/docker-for-mac/install/
+
+
 #### 2. docker-compose
 ```
 $ docker-compose -v
 docker-compose version 1.29.1, build c34c88b2
 ```
+
+参考：https://docs.docker.com/docker-for-mac/install/
 
 #### 3. docker-sync
 ```
@@ -77,17 +82,26 @@ $ docker-sync -v
 0.6.0
 ```
 
+参考:[手順5](#手順5-docker-sync-を起動する)
+
 #### 4. git
 ```
 $ git --version
 git version 2.31.1
 ```
 
+参考(Mac):https://qiita.com/micheleno13/items/133aee005ae37c28960e
+
+参考:https://git-scm.com/book/ja/v2/%E4%BD%BF%E3%81%84%E5%A7%8B%E3%82%81%E3%82%8B-Git%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+
 #### 5. Homebrew
+MacOSかつdocker-syncがインストールされていない場合
 ```
 $ brew --version
 Homebrew 3.1.9
 ```
+
+参考:https://brew.sh/index_ja
 
 ---
 
@@ -183,7 +197,7 @@ ERROR: for todo-laravel_****_1 Cannot start service ****: driver failed programm
 ---
 
 
-### 手順9. docker-sync を起動する
+### 手順5. docker-sync を起動する
 Docker For Mac は、このままの状態だと動作が遅いため、`docker-sync`を用いて高速化します。
 
 
@@ -225,7 +239,7 @@ Creating todo-laravel_phpmyadmin_1 ... done
 
 ---
 
-### 手順8. Laravelパッケージをインストール
+### 手順7. Laravelパッケージをインストール
 Laravelパッケージをインストールします。
 
 ```
